@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cw2;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,9 +27,11 @@ namespace Cw._2
                format=args[2];
             }
             var hash = new HashSet<Student>(new OwnComparer());
+            var studiesHash = new HashSet<Studies>(new StudiesComparer());
 
 
-            try{
+            try
+            {
                 using (var stream = new StreamReader(File.OpenRead(path)))
                 {
                     string line = null; while ((line = stream.ReadLine()) != null)
@@ -39,6 +42,7 @@ namespace Cw._2
                             Wydzial = student[2],
                             Tryb = student[3],
                         };
+                        studiesHash.Add(studia);
 
                         var st = new Student
                         {
@@ -75,9 +79,17 @@ namespace Cw._2
                 ErrorLogging(ex);
             }
 
+
+
+
+
+            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+            ns.Add("CreatedAt", DateTime.Today.ToShortDateString());
+            ns.Add("Author", "Jakub Bogusławski");
+
             FileStream writer = new FileStream(resultPath, FileMode.Create);
             XmlSerializer serializer = new XmlSerializer(typeof(HashSet<Student>), new XmlRootAttribute("uczelnia"));
-            serializer.Serialize(writer, hash);
+            serializer.Serialize(writer, hash, ns);
                 
 
 
