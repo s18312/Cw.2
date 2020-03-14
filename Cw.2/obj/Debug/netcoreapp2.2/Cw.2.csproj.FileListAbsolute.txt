@@ -9,3 +9,13 @@ C:\Users\s18312\Desktop\Cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.AssemblyInfo.cs
 C:\Users\s18312\Desktop\Cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.dll
 C:\Users\s18312\Desktop\Cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.pdb
 C:\Users\s18312\Desktop\Cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.csprojAssemblyReference.cache
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.dll
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.pdb
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.csprojAssemblyReference.cache
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.AssemblyInfoInputs.cache
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\obj\Debug\netcoreapp2.2\Cw.2.AssemblyInfo.cs
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\bin\Debug\netcoreapp2.2\Cw.2.deps.json
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\bin\Debug\netcoreapp2.2\Cw.2.runtimeconfig.json
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\bin\Debug\netcoreapp2.2\Cw.2.runtimeconfig.dev.json
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\bin\Debug\netcoreapp2.2\Cw.2.dll
+C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\bin\Debug\netcoreapp2.2\Cw.2.pdb
