@@ -11,10 +11,7 @@ namespace Cw._2
         public String Imie { get; set; }
         [XmlAttribute(attributeName: "lname")]
         public String Nazwisko { get; set; }
-        [XmlAttribute(attributeName: "studies")]
-        public String Wydzial { get; set; }
-        [XmlAttribute(attributeName: "mode")]
-        public String Tryb { get; set; }
+       
         [XmlAttribute(attributeName: "indexNumber")]
         public String Indeks { get; set; }
         [XmlAttribute(attributeName: "startDate")]
@@ -26,9 +23,11 @@ namespace Cw._2
         [XmlAttribute(attributeName: "fathersName")]
         public String ImieOjca { get; set; }
 
-        public String toString()
+        public Studies Studia { get; set; }
+
+        public override String ToString()
         {
-            return Imie + " " + Nazwisko + " " + Wydzial + " " + Tryb + " " + Indeks + " " + DataRoz + " " + Mail + " " + ImieMatki + " " + ImieOjca;
+            return Imie + " " + Nazwisko + " " + Indeks + " " + DataRoz + " " + Mail + " " + ImieMatki + " " + ImieOjca + Studia;
         }
     }
 }
