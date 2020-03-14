@@ -5,15 +5,15 @@ using System.Xml.Serialization;
 
 namespace Cw._2
 {
-    
     [Serializable]
-    public class Studies
+    public class ActiveStudy
     {
-
-        [XmlElement(ElementName = "name")]
+        [XmlElement(ElementName = "studiesName")]
         public string Wydzial { get; set; }
-        [XmlElement(ElementName = "mode")]
-        public string Tryb { get; set; }
-    
+        [XmlElement(ElementName = "numberOfStudents")]
+        public int IleStud { get; set; }
+
+
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿using Cw2;
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,22 +12,22 @@ namespace Cw._2
         static void Main(string[] args)
         {
             var path = "";
-            var resultPath ="";
+            var resultPath = "";
             var format = "";
-            if(args.Length != 3)
+            if (args.Length != 3)
             {
-               path = @"C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\dane.csv";
-               resultPath = @"C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\result.xml";
-               format = "xml";
+                path = @"C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\dane.csv";
+                resultPath = @"C:\Users\jakub\OneDrive\Pulpit\APBD\cw.2\Cw.2\result.xml";
+                format = "xml";
             }
             else
             {
-               path =args[0];
-               resultPath =args[1];
-               format=args[2];
+                path = args[0];
+                resultPath = args[1];
+                format = args[2];
             }
             var hash = new HashSet<Student>(new OwnComparer());
-            var studiesHash = new HashSet<Studies>(new StudiesComparer());
+            List<string> allStudies = new List<string>();
 
 
             try
@@ -42,7 +42,7 @@ namespace Cw._2
                             Wydzial = student[2],
                             Tryb = student[3],
                         };
-                        studiesHash.Add(studia);
+
 
                         var st = new Student
                         {
@@ -67,10 +67,51 @@ namespace Cw._2
                             {
                                 ErrorLogging(st);
                             }
+                            else
+                            {
+                                allStudies.Add(st.Studia.Wydzial);
+                            }
+
                         }
                     }
                 }
-            }catch(FileNotFoundException ex)
+
+                HashSet<string> studies = new HashSet<string>(allStudies);
+                List<ActiveStudy> aktywne= new List<ActiveStudy>();
+                foreach (string wydzial in studies)
+                {
+                    int ile = 0;
+                    foreach (Student student in hash)
+                    {
+                        if (wydzial.Equals(student.Studia.Wydzial))
+                        {
+                            ile++;
+                        }
+                    }
+
+                    var aktywny = new ActiveStudy
+                    {
+                        Wydzial = wydzial,
+                        IleStud = ile
+                    };
+
+                    aktywne.Add(aktywny);
+
+                }
+
+                var uni = new University
+                {
+                    studenci = hash,
+                    wydzialy = aktywne
+                };
+
+
+                FileStream writer = new FileStream(resultPath, FileMode.Create);
+                XmlSerializer serializer = new XmlSerializer(typeof(University), new XmlRootAttribute("uczelnia"));
+                serializer.Serialize(writer, uni);
+
+            }
+            catch (FileNotFoundException ex)
             {
                 ErrorLogging(ex);
             }
@@ -78,20 +119,6 @@ namespace Cw._2
             {
                 ErrorLogging(ex);
             }
-
-
-
-
-
-            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-            ns.Add("CreatedAt", DateTime.Today.ToShortDateString());
-            ns.Add("Author", "Jakub Bogusławski");
-
-            FileStream writer = new FileStream(resultPath, FileMode.Create);
-            XmlSerializer serializer = new XmlSerializer(typeof(HashSet<Student>), new XmlRootAttribute("uczelnia"));
-            serializer.Serialize(writer, hash, ns);
-                
-
 
 
 
